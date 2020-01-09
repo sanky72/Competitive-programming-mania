@@ -1,0 +1,14 @@
+//using stringStream
+#include <iostream> 
+#include <sstream> 
+using namespace std; 
+  
+int main() 
+{ 
+    string s = "12345"; 
+    stringstream hello(s); 
+    int x = 0; 
+    hello >> x; 
+    cout << "Value of x : " << x; 
+    return 0; 
+}
