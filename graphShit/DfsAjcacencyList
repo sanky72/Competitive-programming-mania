@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define int ll
+#define endl "\n"
+#define pb push_back
+#define all(a) (a).begin(),(a).end()
+#define rev(a) (a).rbegin(),(a).rend()
+#define pll pair<ll,ll>
+#define rep(i,a,b) for(long long i = (a); i < (b); i++)
+#define derep(i,a,b) for(long long i = (a); i>=(b); i--)
+
+void dfs(int current , int parent, vector<vector<int> > vec){
+    if(vec[current].size() == 1){
+       return;
+    }
+    else{
+        for(int i = 0; i<vec[current].size(); i++){
+            if(vec[current][i] != parent){
+                dfs(vec[current][i], current, vec);
+            }
+        }
+    }
+}
+int32_t main() {
+
+            int n, k;
+            cin>>n>>k;
+            vector< vector<int> > vec(n);
+            vec[1].pb(0);
+            for(int i = 1; i<n; i++){
+                int v1, v2;
+                cin>>v1>>v2;
+                vec[v1].push_back(v2);
+                vec[v2].push_back(v1);
+            }
+            dfs(1, 0, vec);
+
+    return 0;
+}
